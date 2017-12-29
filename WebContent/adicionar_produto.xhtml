@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Insert title here</title>
+	</h:head>
+	<h:body>		
+		  <ui:composition template="/WEB-INF/templates/template.xhtml"> 
+		  	  <ui:define name="conteudo"> 
+		  	  	<div id="main"> 		  	  		
+			  	  <h:form class="form container" style="padding-bottom:100px;" enctype="multipart/form-data">
+			  	  	<div class="div-input">
+				  	  	<p:outputLabel value="Título" for="nome" class="col-lg-4"/>
+        			 	<p:inputText required="true" id="nome" value="#{mProdutoBean.produto.nome}" class="col-lg-8">
+        			 		<f:validateLength minimum="10" maximum="70"/>
+        			 	</p:inputText>
+        			 	<h:message for="nome"/>
+        			 	<p:growl id="growl" showDetail="true" />
+			  	  	</div>
+			  	  	
+			  	  	<div class="div-input">
+				  	 	<p:outputLabel value="Descrição" for="descricao" class="col-lg-4"/>
+				  	 	 <p:inputTextarea required="true" id="descricao" rows="5" cols="30"  value="#{mProdutoBean.produto.descricao}" queryDelay="750" minQueryLength="4"  class="col-lg-8" style="margin-bottom:20px;">
+				  	 	 	<f:validateLength minimum="10" maximum="120"/>
+				  	 	 </p:inputTextarea>
+				  	 	 <h:message for="descricao"/>         			 	        			 	 
+			  	  	</div>			  	  	
+			  	  	<div class="div-input">
+			  	  		<p:outputLabel value="Preço" for="preco" class="col-lg-4"/>
+				  	 	<p:inputText  required="true"  id="preco"  value="#{mProdutoBean.produto.preco}" for="preco" class="col-lg-8">
+				  	 		<f:convertNumber currencySymbol="R$" type="currency"/>
+				  	 	</p:inputText>        			         			 	
+        			 	<h:message for="preco"/> 	
+			  	  	</div>
+			  	  	<div class="div-input">
+				  	 	<p:outputLabel value="Condição" for="condicao" class="col-lg-4"/>        			         			 	
+        			 	<h:selectOneMenu id="condicao" value="#{mProdutoBean.produto.condicao}" class="col-lg-8"> 
+						   <f:selectItem itemValue = "Novo" itemLabel = "Novo" /> 
+						   <f:selectItem itemValue = "Usado" itemLabel = "Usado" />					  
+						</h:selectOneMenu> 	
+			  	  	</div>
+			  	  	<div class="div-input">
+				  	 	<p:outputLabel value="Foto" for="foto" class="col-lg-4"/>        			         			 	
+        			 	<p:fileUpload required="true" id="foto" value="#{mProdutoBean.arquivo}" mode="simple" skinSimple="true"/>
+        			 		 	
+			  	  	</div>			  	  	
+			  	  					         							  	  	 	  		  	  			  	  
+        			<div class="div-input">
+				  	  	<p:outputLabel value="Categoria" class="col-lg-4"/>        			 
+        			 	<h:selectOneMenu value="#{mProdutoBean.produto.categoria}" class="col-lg-8"> 
+						   <f:selectItem itemValue = "bebes" itemLabel = "Bebês" /> 
+						   <f:selectItem itemValue = "eletronicos" itemLabel = "Eletrônicos" />
+						   
+						   <f:selectItem itemValue = "Games" itemLabel = "games" />
+						   <f:selectItem itemValue = "Informática" itemLabel = "informatica" />
+						   <f:selectItem itemValue = "Imóveis" itemLabel = "imoveiss" />
+						   <f:selectItem itemValue = "Livros" itemLabel = "livros" />
+						   
+						   <f:selectItem itemValue = "Música" itemLabel = "musica" />
+						   <f:selectItem itemValue = "Veiculos" itemLabel = "veiculos" />					   
+						</h:selectOneMenu>
+			  	  	</div>			  	  																	 									 			         		         			              					    				   							
+					 <center><p:commandButton value="Enviar" action="#{mProdutoBean.cadastrar}"  ajax="false" class="button"/></center>
+			  	  </h:form>
+			  	</div> 					  	  	  	 
+		  	  </ui:define>
+		  </ui:composition>
+	</h:body>
+</html>

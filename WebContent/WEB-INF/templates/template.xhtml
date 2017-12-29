@@ -1,0 +1,147 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ <html xmlns="http://www.w3.org/1999/xhtml" 
+  	xmlns:h="http://java.sun.com/jsf/html"
+  	xmlns:f="http://java.sun.com/jsf/core" 
+  	xmlns:ui="http://java.sun.com/jsf/facelets"
+  	xmlns:p="http://primefaces.org/ui"> 
+ <h:head>  	
+ 	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+ 	<h:outputStylesheet library="css" name="bootstrap-theme.min.css"></h:outputStylesheet>		
+	<h:outputScript library="js" name="bootstrap.min.js" />
+
+    <title>K19 Treinamentos</title> 
+    <style>    	
+    	*{
+    		margin: 0;
+    		padding: 0;
+    	}
+    	body{
+    		background: #f5f5f5;
+    	}
+		#header{
+			position:fixed;
+			top:0px;
+			z-index:1000;
+			width:100%;
+			height:67px;
+			background: #00B8D4;			
+		}
+		.detalheProd{
+			background: #fff;
+			border: 1px solid #000;			
+		}
+		#main{
+			margin-top: 80px;
+			margin-bottom: 40px;
+		}
+		#footer{
+			height: 80px;
+			background: #212121;
+			color:white;
+			margin-top: 300px;
+		}
+		#logo{
+			height: 64px;
+			margin-left: 70px;
+		}
+
+		.card_music{
+			background: #fff;
+			padding: 10px;
+			margin: 0;
+			margin-top: 20px;
+			box-shadow: #ddd 0px 0px 3px;			
+		}
+		.card_music img{
+			width: 100%;
+			height: 150px;
+		}
+		#img-produto{
+			width: 90%;
+			height: 450px;	
+		}
+	 	.linkHeader{
+	 		padding:0;	 		
+			float:right;
+			color: #fff;
+			margin: 20px;
+			margin-left:0;
+			margin-top: 22px;			
+		}	
+		h3{
+			font-family:Helvetica,Arial,sans-serif;
+		}
+		.action{
+			margin-left: 20px;			
+			font-size:20px;
+			color: #990023;
+		}
+		.form{		
+			min-height: 500px;
+			width: 460px;			
+			margin: 20px auto 100px auto;
+			background: #fff;			
+			padding: 30px; 			
+		}	
+		#div-categoria{
+			background: #fff;
+			padding: 10px;
+			padding-left: 20px;
+			padding-bottom: 150px;			
+		}	
+		.div-input{
+			margin: 20px;
+			padding-bottom:30px;
+			clear: both;
+		}
+		.button{
+			width: 200px;
+			height:45px;
+			border:none;
+			margin-top:60px;
+			margin-bottom:20px;
+			color: white;
+			background: #00B8D4;
+		}
+		.btn-pesquisar{
+			width: 200px;
+			height:45px;
+			border:none;
+			margin-top:10px;
+			margin-bottom:20px;
+			color: white;
+			background: #00B8D4;
+		}
+		.link{
+			color:white;
+		}
+    </style>
+ </h:head> 
+ <h:body> 
+  	<div id="header">
+  		<h:message style="color:red" />
+  		<h:link outcome="index">
+  			<h:graphicImage id="logo" library="imagens" name="logo_site.png"/>  			
+  		</h:link> 		 		
+ 		<h:panelGroup rendered="#{usuarioBean.usuario.logged}">
+		    <center style="margin-top: -55px; color: #fff; font-size: 30px;"><a class="link" href="perfil.xhtml">Bem vindo #{usuarioBean.usuario.nome}</a></center>
+		    <h:form> 	
+		    	<h:commandLink style="margin-top: -30px; color: #fff; " class="linkHeader" value="Sair" action="#{usuarioBean.loggout}" />
+		    </h:form>
+		    <h:link class="linkHeader" style="margin-right:50px; margin-top:-30px;" value="Pesquisar" outcome="pesquisar" />		    		    
+		    <h:link class="linkHeader" style="margin-right:50px; margin-top:-30px;" value="Novo produto" outcome="adicionar_produto" />
+		</h:panelGroup>
+		<h:panelGroup rendered="#{not usuarioBean.usuario.logged}">
+		    <h:link class="linkHeader" style="margin-right:100px;" value="Cadastre-se" outcome="criar_conta" />
+		    <h:link class="linkHeader" value="Login" outcome="login.xhtml?id=2" />
+		    <h:link class="linkHeader" value="Pesquisar" outcome="pesquisar" />					   
+		</h:panelGroup>				 		
+  	</div>  	  	
+	<ui:insert name="conteudo">	 
+		Espaço para o conteúdo da tela
+	</ui:insert>	    	
+  	<div id="footer"> 
+  		<br/><br/><center>&copy; 2017 Mercado Net. Todos os direitos reservados.</center>
+  	</div>
+  </h:body>
+  </html>

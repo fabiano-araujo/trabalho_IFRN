@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />		
+		<title>Insert title here</title>		
+	</h:head>
+	<h:body>			
+		<ui:composition template="/WEB-INF/templates/template.xhtml">
+			 <ui:define name="conteudo">
+			 	<div id="main">
+				 	<div class="container-fluid">
+					 	<div class="row">
+					 		<div class="col-xs-12 col-sm-4 col-md-3 col-lg-4">
+					 			<div id="div-categoria">
+					 				<h:graphicImage styleClass="form-control" url="#{usuarioBean.usuario.urlFotoUsuario}"
+      												 rendered="true" style="width: 100%; height: 258px;"/>					 			
+						 			<center><h1>#{usuarioBean.usuario.nome}</h1></center>
+						 			<br/>
+						 			<h4>Email: #{usuarioBean.usuario.email}</h4>					 										 									 							 									 								 								 								 							 								 							 								 								 								 								 					 		
+						 			<h4>Telefone: #{usuarioBean.usuario.telefone}</h4>
+						 			<h4>Data de nascimento: #{usuarioBean.usuario.dt_nascimento}</h4>
+						 			<h4>Endereco: #{usuarioBean.usuario.endereco}</h4>
+																										
+									<center><h:button outcome="criar_conta.xhtml" class="button" value="Editar"></h:button></center>	 		
+						 		</div>					 			
+					 		</div>					 		
+					 		<div class="col-xs-12 col-sm-8 col-md-9 col-lg-8">
+					 			<h3 style="background: #fff; padding: 15px; ">Meus produtos</h3>				
+					 			<ui:repeat var="produto" value="#{mProdutoBean.produtosUsuario}">					 				
+							 	 	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							 	 		<h:link outcome="ver_produto.xhtml?id=#{produto.id_produto}">
+							 	 			<div class="card_music">
+							 	 				<h:graphicImage styleClass="form-control" url="#{produto.urlFotoUsuario}"
+      												 rendered="true" style="width: 100%; height: 128px;"/>								 	 											 	 			
+												<b><h3 style="margin-left: 6px;">#{produto.nome}</h3></b>											
+												<b><h:outputText style="color:#39b54a; margin-left: 6px;" value="R$: #{produto.preco}"/></b><br/>
+												<h:outputText style="margin-left: 6px; max-height:200px;" value="#{produto.descricao}"/>
+												
+												<br/><h:link  class="action" value="Editar" outcome="adicionar_produto.xhtml?id=#{produto.id_produto}"></h:link> 
+												<h:link class="action" value="Excluir" outcome="index.xhtml"></h:link>
+								 	 		</div>
+							 	 		</h:link>							 	 								 	 								 	 		 				 		 				 		 							 		
+									</div>													
+						 		 </ui:repeat>
+					 		</div>						 	 
+					 	</div>  
+					</div>				 	
+			 	</div>					 	 	 			 			 							    
+			 </ui:define> 
+		</ui:composition>	
+	</h:body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />		
+		<title>Insert title here</title>		
+	</h:head>
+	<h:body>			
+		<ui:composition template="/WEB-INF/templates/template.xhtml">
+			 <ui:define name="conteudo">
+			 	<div id="main">
+				 	<div class="container-fluid">
+					 	<div class="row">
+					 		<div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+					 			<div id="div-categoria">
+					 				<h3>Categorias</h3>						 			
+							 			<h4><h:link value="Bebês" outcome="index.xhtml?categoria=Bebes"/></h4>
+						 			<h4><h:link value="Eletrônicos" outcome="index.xhtml?categoria=eletronicos"/></h4>						 			
+						 			<h4><h:link value="Games" outcome="index.xhtml?categoria=games"/></h4>
+						 			<h4><h:link value="Informática" outcome="index.xhtml?categoria=informatica"/></h4>
+						 			<h4><h:link value="Imóveis" outcome="index.xhtml?categoria=imoveiss"/></h4>					 									 								 						 								 								 						 								 	
+						 			<h4><h:link value="Livros" outcome="index.xhtml?categoria=livros"/></h4>
+						 			<h4><h:link value="Música" outcome="index.xhtml?categoria=musica"/></h4>			
+						 			<h4><h:link value="Veiculos" outcome="index.xhtml?categoria=veiculos"/></h4>
+					 			</div>						 								 								 								 							 								 							 								 								 								 								 					 			
+					 		</div>					 		
+					 		<div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+					 			<h3 style="background: #fff; padding: 15px; ">Produtos</h3>				
+					 			<ui:repeat var="produto" value="#{mProdutoBean.produtos}">					 				
+							 	 	<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							 	 		<h:link outcome="ver_produto.xhtml?id=#{produto.id_produto}">
+							 	 			<div class="card_music">
+							 	 				<h:graphicImage styleClass="form-control" url="#{produto.urlFotoUsuario}"
+      												 rendered="true" style="width: 100%; height: 128px;"/>								 	 											 	 			
+												<b><h3 style="margin-left: 6px;">#{produto.nome}</h3></b>											
+												<b><h:outputText style="color:#39b54a; margin-left: 6px;" value="R$: #{produto.preco}"/></b><br/>
+												<h:outputText style="margin-left: 6px; max-height:200px;"  value="#{produto.descricao}"/>																							
+								 	 		</div>
+							 	 		</h:link>							 	 								 	 								 	 		 				 		 				 		 							 		
+									</div>													
+						 		 </ui:repeat>
+					 		</div>						 	 
+					 	</div>  
+					</div>				 	
+			 	</div>					 	 	 			 			 							    
+			 </ui:define> 
+		</ui:composition>	
+	</h:body>
+</html>

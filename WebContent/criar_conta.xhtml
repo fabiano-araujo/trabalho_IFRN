@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Insert title here</title>
+	</h:head>
+	<h:body>		
+		  <ui:composition template="/WEB-INF/templates/template.xhtml"> 
+		  	  <ui:define name="conteudo">
+		  	  	<div id="main"> 
+			  	  <h:form  class="form" enctype="multipart/form-data">			  	  			  	  		
+			  	  	<div>
+			  	  		<div class="div-input">
+				  	  		 <p:outputLabel value="Nome" for="nome" class="col-lg-4"/>        			 
+		        			 <h:inputText required="true" id="nome" value="#{usuarioBean.usuario.nome}" class="col-lg-8" rendered="true">		        			 	
+		        			 	<f:validateLength minimum="2" maximum="60"/>
+		        			 	<f:validateRequired />
+		        			 </h:inputText><br/>
+		        			 <h:message for="nome"/>
+			  	  		</div>
+			  	  		<div class="div-input">
+				  	  		<p:outputLabel required="true" value="Email" for="email" class="col-lg-4"/>        			 
+		        			<p:inputText id="email" value="#{usuarioBean.usuario.email}" class="col-lg-8">
+		        				<f:validateLength minimum="2"/>
+		        			</p:inputText><br/>
+		        			<h:message for="email"/>
+			  	  		</div>
+			  	  		<div class="div-input">
+			  	  			<p:outputLabel value="Telefone" for="telefone" class="col-lg-4"/>        			 
+	        			 	<p:inputText  required="true" id="telefone" value="#{usuarioBean.usuario.telefone}" class="col-lg-8">
+	        			 		<f:validateLength minimum="8" maximum="11"/>
+	        			 		<f:convertNumber type="number"/>	        			 			        			 	
+	        			 	</p:inputText><br/>
+	        			 	<h:message for="telefone"/>
+			  	  		</div>
+			  	  		<div class="div-input">			  	  				        			
+		        			 <p:outputLabel value="Endereço" for="endereco" class="col-lg-4"/>        			 
+		        			 <p:inputText required="true"  id="endereco" value="#{usuarioBean.usuario.endereco}" class="col-lg-8">
+		        			 	<f:validateLength minimum="10"/>
+		        			</p:inputText><br/>
+		        			 <h:message for="endereco"/>
+			  	  		</div>
+			  	  		<div class="div-input">
+			  	  			<p:outputLabel value="Senha" for="senha" class="col-lg-4"/>        			 
+	        			 	<p:inputText required="true" id="senha" type="password" value="#{usuarioBean.usuario.senha}" class="col-lg-8">
+	        			 		<f:validateLength minimum="6" maximum="15"/>
+	        			 	</p:inputText><br/>
+	        			 	<h:message for="senha"/>
+			  	  		</div>
+			  	  		<div class="div-input">			  	  		
+			  	  			<p:outputLabel for="nascimento" value="Data de nascimente" class="col-lg-4"/>
+			  	  			  <p:growl id="growl" showDetail="true" />
+			  	  			  <p:calendar rendered="true" showOn="button" id="nascimento" class="col-lg-8" value="#{usuarioBean.usuario.dt_nascimento}" >
+						        <p:ajax event="dateSelect" listener="#{usuarioBean.onDateSelect}" update="growl" />
+						    </p:calendar>        			 	        			 	
+	        			 	<h:message for="nascimento"/>
+			  	  		</div>
+	        			<div class="div-input">
+				  	 		<p:outputLabel value="Foto" for="foto" class="col-lg-4"/>        			         			 	
+        			 		<p:fileUpload required="true" id="foto" value="#{usuarioBean.usuario.arquivo}" mode="simple" skinSimple="true"/>        			 		 
+			  	  		</div>			  	  			    
+			  	  		<center><p:commandButton value="Enviar" action="#{usuarioBean.cadastrar}"  ajax="false" class="button"/></center>   			 				    				    				   													 												 				  	  
+			  	  	</div>			  	   			  	  	
+			  	  </h:form>
+			  	</div> 					  	  	  	 
+		  	  </ui:define>
+		  </ui:composition>
+	</h:body>
+</html>

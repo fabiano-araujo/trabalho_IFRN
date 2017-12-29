@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Insert title here</title>	
+</h:head>
+<h:body>	
+	<!-- <h:panelGroup rendered="#{usuarioBean.usuario.logged}">
+		#{usuarioBean.redirencionar}
+	</h:panelGroup>		 -->
+	<ui:composition template="/WEB-INF/templates/template.xhtml">
+	 <p:growl/>
+	 <h:messages />
+		<ui:define name="conteudo">
+		 	<div id="main">  		  	
+				<h:form>
+					<div style="min-height: 400px;
+							width: 400px;			
+							margin: 20px auto 100px auto;
+							background: #fff;
+							padding: 30px;">
+						<div class="div-input">
+				  	  		<p:outputLabel value="Email" for="email" class="col-lg-4"/>
+							<p:inputText required="true" id="email" value="#{usuarioBean.usuario.email}" class="col-lg-8">
+								<f:validateLength minimum="1"/>
+								<p:growl id="growl" showDetail="true" />
+								<h:message for="email"/>
+							</p:inputText><br />
+			  	  		</div>
+
+						<div class="div-input">
+				  	  		<p:outputLabel value="Senha" for="senha" class="col-lg-4"/>
+							<p:inputText required="true" type="password" id="senha" value="#{usuarioBean.usuario.senha}" class="col-lg-8">
+								<f:validateLength minimum="6" maximum="15"/>
+								<h:message for="senha"/>
+							</p:inputText>
+			  	  		</div>						
+								
+						<center><p:commandButton value="Submit" ajax="false" class="button" style="margin-top:120px;"
+							action="#{usuarioBean.autenticar}" /></center>
+					</div>					
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
